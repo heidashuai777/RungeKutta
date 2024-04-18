@@ -2,87 +2,8 @@ import numpy as np
 from scipy.optimize import minimize
 from initialization import initialization
 from RungeKutta import RungeKutta
-
-'''
-def Unifrnd(a, b, c, dim):
-    a2 = a / 2
-    b2 = b / 2
-    mu = a2 + b2
-    sig = b2 - a2
-    z = mu + sig * (2 * np.random.rand(c, dim) - 1)
-    return z
-
-def RndX(nP, i):
-    Qi = np.random.permutation(nP)
-    Qi = Qi[Qi != i]
-    A, B, C = Qi[:3]
-    return A, B, C
-
-def RUN(nP, MaxIt, lb, ub, dim, fobj):
-    Cost = np.zeros(nP)  # Record the Fitness of all Solutions
-    X = initialization(nP, dim, ub, lb)  # Initialize the set of random solutions
-    Xnew2 = np.zeros(dim)
-
-    Convergence_curve = np.zeros(MaxIt)
-
-    for i in range(nP):
-        Cost[i] = fobj(X[i, :])  # Calculate the Value of Objective Function
-
-    ind = np.argmin(Cost)  # Determine the index of the Best Solution
-    Best_Cost = Cost[ind]  # Get the Best Solution
-    Best_X = X[ind, :]
-
-    Convergence_curve[0] = Best_Cost
-    
-    # Main Loop of RUN
-    it = 1  # Number of iterations
-        # Main Loop of RUN
-    while it < MaxIt:
-        it += 1
-        f = 20 * np.exp(-(12 * (it / MaxIt)))  # (Eq.17.6)
-        Xavg = np.mean(X, axis=0)  # Determine the Average of Solutions
-        SF = 2 * (0.5 - np.random.rand(nP)) * f  # Determine the Adaptive Factor (Eq.17.5)
-
-        for i in range(nP):
-            ind_l = np.argmin(Cost)
-            lBest = X[ind_l, :]
-
-            A, B, C = RndX(nP, i)  # Determine Three Random Indices of Solutions
-            ind1 = np.argmin(Cost[[A, B, C]])
-
-            # Determine Delta X (Eqs. 11.1 to 11.3)
-            gama = np.random.rand() * (X[i, :] - np.random.rand(dim) * (ub - lb)) * np.exp(-4 * it / MaxIt)
-            Stp = np.random.rand(dim) * ((Best_X - np.random.rand() * Xavg) + gama)
-            DelX = 2 * np.random.rand(dim) * (np.abs(Stp))
-
-            # Determine Xb and Xw for using in Runge Kutta method
-            if Cost[i] < Cost[ind1]:
-                Xb = X[i, :]
-                Xw = X[ind1, :]
-            else:
-                Xb = X[ind1, :]
-                Xw = X[i, :]
-
-           # Update each solution
-            X[i, :] = RungeKutta(Xb, Xw, DelX)
-            
-            # Calculate the new cost
-            Cost[i] = fobj(X[i, :])
-            
-            # If the new cost is better, update the best cost and best solution
-            if Cost[i] < Best_Cost:
-                Best_Cost = Cost[i]
-                Best_X = X[i, :]
-
-        # Save Best Solution at each iteration
-        Convergence_curve[it-1] = Best_Cost
-        print('it : ', it, ', Best Cost = ', Convergence_curve[it-1])
-
-    return Best_Cost, Best_X, Convergence_curve
-'''
-
 # A function to determine a random number
-# with uniform distribution (unifrnd function in Matlab)
+# with uniform distribution
 def Unifrnd(a, b, c, dim):
     a2 = a / 2
     b2 = b / 2
