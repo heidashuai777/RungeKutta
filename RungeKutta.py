@@ -1,4 +1,7 @@
+# This function is used to calculate the Runge-Kutta method for the given input values.
+#importing the necessary packages
 import numpy as np
+# A function to implement the Runge Kutta method for solving the optimization problem
 def RungeKutta(XB, XW, DelX):
     dim = len(XB)
     C = np.random.randint(1, 3) * (1 - np.random.rand())
