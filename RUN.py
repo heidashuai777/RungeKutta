@@ -1,9 +1,11 @@
+# A function to implement the Runge Kutta method for solving the optimization problem
+# Importing the necessary packages
 import numpy as np
 from scipy.optimize import minimize
 from initialization import initialization
 from RungeKutta import RungeKutta
-# A function to determine a random number
-# with uniform distribution
+
+# A function to determine a random number from a uniform distribution
 def Unifrnd(a, b, c, dim):
     a2 = a / 2
     b2 = b / 2
