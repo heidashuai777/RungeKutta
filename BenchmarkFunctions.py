@@ -1,6 +1,9 @@
+# Description: This file contains the benchmark functions used in the Runge-Kutta optimization algorithm.
+# The functions are F1 to F14. The functions are taken from the following paper:
+# https://doi.org/10.1016/j.advengsoft.2020.102905
+#importing the necessary packages
 import numpy as np
-from scipy.special import gamma
-
+# This function initializes the population of the optimization algorithm
 def Ufun(x, a, k, m):
     return k * ((x - a) ** m) * (x > a) + k * ((-x - a) ** m) * (x < -a)
 
@@ -69,7 +72,7 @@ def F13(x):
 def F14(x):
     D = len(x)
     return (np.pi / D) * (10 * (np.sin(np.pi * (1 + (x[0] + 1) / 4)))**2 + np.sum((((x[:D-1] + 1) / 4)**2 * (1 + 10 * (np.sin(np.pi * (1 + (x[1:D] + 1) / 4))))**2) + ((x[D-1] + 1) / 4)**2) + np.sum(Ufun(x, 10, 100, 4)))
-
+# This function loads the details of the selected benchmark function
 def BenchmarkFunctions(F):
     D = 30
     if F == 'F1':
@@ -145,6 +148,5 @@ def BenchmarkFunctions(F):
     else:
         raise ValueError(f"Unsupported function: {F}")
     return lb, ub, dim, fobj
-
 
 
