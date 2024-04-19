@@ -1,3 +1,5 @@
+# This function initializes the population of the optimization algorithm
+#Importing the necessary pakeages
 import numpy as np
 
 def initialization(nP, dim, ub, lb):
@@ -15,5 +17,4 @@ def initialization(nP, dim, ub, lb):
             ub_i = ub[i]
             lb_i = lb[i]
             X[:, i] = np.random.rand(nP) * (ub_i - lb_i) + lb_i
-
     return X
